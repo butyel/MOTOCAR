@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Store, Phone, MapPin, Clock, Globe } from 'lucide-react'
+import Image from 'next/image'
+import { Phone, MapPin, Clock, Globe } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/constants'
 
 export function Footer() {
@@ -10,9 +11,14 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <Link href="/" className="flex items-center gap-2 text-xl font-bold text-red-500 mb-4">
-              <Store className="h-6 w-6" />
-              Motocar
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/imagens/logotipo.png"
+                alt="Motocar"
+                width={160}
+                height={45}
+                className="h-10 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-sm text-gray-400 mb-4">
               Peças, acessórios e serviços para sua moto em Presidente Epitácio.

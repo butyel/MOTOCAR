@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Heart, ShoppingCart, User, Store } from 'lucide-react'
+import Image from 'next/image'
+import { Heart, ShoppingCart, User } from 'lucide-react'
 import { TopBar } from '@/components/layout/TopBar'
 import { SearchBar } from '@/components/layout/SearchBar'
 import { MegaMenu } from '@/components/layout/MegaMenu'
@@ -26,9 +27,15 @@ export function Header({ categories }: { categories: Category[] }) {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
               <MobileMenu categories={categories} />
-              <Link href="/" className="flex items-center gap-2 text-xl font-bold text-red-600">
-                <Store className="h-7 w-7" />
-                <span className="hidden sm:inline">Motocar</span>
+              <Link href="/" className="flex items-center gap-2 shrink-0">
+                <Image
+                  src="/imagens/logotipo.png"
+                  alt="Motocar"
+                  width={140}
+                  height={40}
+                  className="h-8 sm:h-10 w-auto object-contain"
+                  priority
+                />
               </Link>
             </div>
             <SearchBar />
