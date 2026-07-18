@@ -1048,10 +1048,10 @@ export const DEMO_SITE_SETTINGS: Record<string, string> = {
   company_phone: '(18) 3281-7353',
   company_email: 'contato@motocar.com.br',
   company_address: 'Av. Presidente Vargas, 4-03 - Centro, Presidente Epitácio - SP',
-  company_cnpj: '00.000.000/0001-00',
+  company_cnpj: '59.002.817/0001-41',
   business_hours: 'Seg a Sex: 08h - 18h | Sáb: 08h - 12h',
-  whatsapp_number: '5518999999999',
-  instagram_url: 'https://instagram.com/motocar',
+  whatsapp_number: '551832817353',
+  instagram_url: 'https://instagram.com/motocar.epitacio',
   facebook_url: '#',
   youtube_url: '#',
 }

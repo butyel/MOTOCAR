@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
     'Peças, acessórios, manutenção e atendimento especializado para motociclistas em Presidente Epitácio e região.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://motocar.com.br',
   phone: '(18) 3281-7353',
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5518999999999',
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '551832817353',
   email: 'contato@motocar.com.br',
   address: {
     street: 'Av. Presidente Vargas',
@@ -24,9 +24,9 @@ export const SITE_CONFIG = {
     saturday: 'Sáb: 08h - 12h',
     sunday: 'Dom: Fechado',
   },
-  cnpj: '00.000.000/0001-00',
+  cnpj: '59.002.817/0001-41',
   social: {
-    instagram: 'https://instagram.com/motocar',
+    instagram: 'https://instagram.com/motocar.epitacio',
     facebook: '#',
     youtube: '#',
   },
