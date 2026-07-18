@@ -1,45 +1,32 @@
 'use client'
 
 import { Clock, MapPin, Phone, ShoppingBag } from 'lucide-react'
-import Link from 'next/link'
 import { SITE_CONFIG } from '@/lib/constants'
 
 export function TopBar() {
   return (
-    <div className="bg-gray-900 text-white text-xs">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-8">
-          <div className="hidden md:flex items-center gap-4">
+    <div className="bg-motocar-dark text-motocar-white text-[11px] leading-none">
+      <div className="container-motocar">
+        <div className="flex items-center justify-between h-7">
+          <div className="flex items-center gap-3 md:gap-5">
             <span className="flex items-center gap-1">
-              <MapPin className="h-3 w-3 text-red-400" />
-              Presidente Epitácio - SP
+              <MapPin className="h-2.5 w-2.5 text-motocar-red" />
+              <span className="text-motocar-gray">Presidente Epitácio - SP</span>
             </span>
             <span className="flex items-center gap-1">
-              <Phone className="h-3 w-3 text-red-400" />
-              <a href={`tel:${SITE_CONFIG.phone}`} className="hover:text-red-400 transition-colors">
+              <Phone className="h-2.5 w-2.5 text-motocar-red" />
+              <a href={`tel:${SITE_CONFIG.phone}`} className="text-motocar-gray hover:text-motocar-white transition-colors">
                 {SITE_CONFIG.phone}
               </a>
             </span>
-            <span className="flex items-center gap-1">
-              <ShoppingBag className="h-3 w-3 text-green-400" />
-              Retirada na loja
+            <span className="hidden md:flex items-center gap-1">
+              <Clock className="h-2.5 w-2.5 text-motocar-green" />
+              <span className="text-motocar-gray">{SITE_CONFIG.businessHours.weekday}</span>
             </span>
           </div>
-          <div className="flex md:hidden items-center gap-1">
-            <MapPin className="h-3 w-3 text-red-400" />
-            <span>Presidente Epitácio</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="hidden sm:flex items-center gap-1">
-              <Clock className="h-3 w-3 text-green-400" />
-              {SITE_CONFIG.businessHours.weekday}
-            </span>
-            <Link href="/sobre" className="hover:text-red-400 transition-colors">
-              Sobre
-            </Link>
-            <Link href="/contato" className="hover:text-red-400 transition-colors">
-              Contato
-            </Link>
+          <div className="flex items-center gap-1">
+            <ShoppingBag className="h-2.5 w-2.5 text-motocar-green" />
+            <span className="text-motocar-gray">Retire na loja</span>
           </div>
         </div>
       </div>

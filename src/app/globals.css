@@ -1,10 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+@theme {
+  --color-motocar-red: #C71920;
+  --color-motocar-red-dark: #8F1016;
+  --color-motocar-red-light: #E5353C;
+  --color-motocar-green: #227438;
+  --color-motocar-green-light: #2B8F45;
+  --color-motocar-graphite: #171717;
+  --color-motocar-dark: #0D0D0D;
+  --color-motocar-off-white: #F5F3EE;
+  --color-motocar-light-gray: #E8E6E1;
+  --color-motocar-gray: #9CA3AF;
+  --color-motocar-white: #FFFFFF;
+  --color-motocar-black: #0A0A0A;
+  --font-heading: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -16,11 +26,17 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  background: var(--color-motocar-white);
+  color: var(--color-motocar-graphite);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -34,23 +50,20 @@ body {
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.container-motocar {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-.animate-fade-in-delay-1 {
-  animation: fadeIn 0.5s ease-out 0.1s forwards;
-  opacity: 0;
-}
-
-.animate-fade-in-delay-2 {
-  animation: fadeIn 0.5s ease-out 0.2s forwards;
-  opacity: 0;
+@media (min-width: 768px) {
+  .container-motocar {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .line-clamp-1 {

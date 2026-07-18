@@ -7,56 +7,56 @@ import { SITE_CONFIG } from '@/lib/constants'
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <Link href="/" className="inline-block mb-4">
+    <footer className="bg-motocar-dark text-motocar-gray">
+      <div className="container-motocar py-10">
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
+          <div className="col-span-12 md:col-span-4">
+            <Link href="/" className="inline-block mb-3">
               <Image
                 src="/imagens/logotipo.png"
                 alt="Motocar"
-                width={160}
-                height={45}
-                className="h-10 w-auto object-contain brightness-0 invert"
+                width={140}
+                height={38}
+                className="h-8 w-auto object-contain brightness-0 invert"
               />
             </Link>
-            <p className="text-sm text-gray-400 mb-4">
-              Peças, acessórios e serviços para sua moto em Presidente Epitácio.
+            <p className="text-sm text-motocar-gray mb-3 max-w-xs">
+              Peças, acessórios e oficina para sua moto em Presidente Epitácio.
             </p>
-            <div className="flex items-center gap-3">
-              <a href={SITE_CONFIG.social.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition-colors" aria-label="Instagram">
-                <Globe className="h-5 w-5" />
-              </a>
-              <a href={SITE_CONFIG.social.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition-colors" aria-label="Facebook">
-                <Globe className="h-5 w-5" />
-              </a>
-              <a href={SITE_CONFIG.social.youtube} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition-colors" aria-label="YouTube">
-                <Globe className="h-5 w-5" />
-              </a>
-            </div>
+            <a
+              href={SITE_CONFIG.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-motocar-gray hover:text-motocar-red transition-colors"
+            >
+              <Globe className="h-4 w-4" />
+              @motocar.epitacio
+            </a>
           </div>
-          <div>
-            <h3 className="text-white font-semibold mb-4">Institucional</h3>
-            <ul className="space-y-2">
-              <li><Link href="/sobre" className="text-sm hover:text-red-400 transition-colors">Sobre a Motocar</Link></li>
-              <li><Link href="/servicos" className="text-sm hover:text-red-400 transition-colors">Nossa oficina</Link></li>
-              <li><Link href="/contato" className="text-sm hover:text-red-400 transition-colors">Contato</Link></li>
-              <li><Link href="/blog" className="text-sm hover:text-red-400 transition-colors">Blog</Link></li>
+
+          <div className="col-span-6 md:col-span-2">
+            <p className="text-xs font-bold text-motocar-white uppercase tracking-wider mb-3">Links</p>
+            <ul className="space-y-1.5">
+              <li><Link href="/produtos" className="text-sm hover:text-motocar-red transition-colors">Produtos</Link></li>
+              <li><Link href="/servicos" className="text-sm hover:text-motocar-red transition-colors">Oficina</Link></li>
+              <li><Link href="/ofertas" className="text-sm hover:text-motocar-red transition-colors">Ofertas</Link></li>
+              <li><Link href="/blog" className="text-sm hover:text-motocar-red transition-colors">Blog</Link></li>
             </ul>
           </div>
-          <div>
-            <h3 className="text-white font-semibold mb-4">Atendimento</h3>
-            <ul className="space-y-3">
+
+          <div className="col-span-6 md:col-span-3">
+            <p className="text-xs font-bold text-motocar-white uppercase tracking-wider mb-3">Atendimento</p>
+            <ul className="space-y-2">
               <li className="flex items-start gap-2">
-                <Phone className="h-4 w-4 mt-0.5 text-red-400 shrink-0" />
-                <a href={`tel:${SITE_CONFIG.phone}`} className="text-sm hover:text-red-400 transition-colors">{SITE_CONFIG.phone}</a>
+                <Phone className="h-3.5 w-3.5 mt-0.5 text-motocar-red shrink-0" />
+                <a href={`tel:${SITE_CONFIG.phone}`} className="text-sm hover:text-motocar-red transition-colors">{SITE_CONFIG.phone}</a>
               </li>
               <li className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 mt-0.5 text-red-400 shrink-0" />
+                <MapPin className="h-3.5 w-3.5 mt-0.5 text-motocar-red shrink-0" />
                 <span className="text-sm">{SITE_CONFIG.address.full}</span>
               </li>
               <li className="flex items-start gap-2">
-                <Clock className="h-4 w-4 mt-0.5 text-green-400 shrink-0" />
+                <Clock className="h-3.5 w-3.5 mt-0.5 text-motocar-green shrink-0" />
                 <div className="text-sm">
                   <p>{SITE_CONFIG.businessHours.weekday}</p>
                   <p>{SITE_CONFIG.businessHours.saturday}</p>
@@ -64,24 +64,27 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div>
-            <h3 className="text-white font-semibold mb-4">Ajuda</h3>
-            <ul className="space-y-2">
-              <li><Link href="/politica-de-privacidade" className="text-sm hover:text-red-400 transition-colors">Política de privacidade</Link></li>
-              <li><Link href="/politica-de-troca" className="text-sm hover:text-red-400 transition-colors">Política de troca</Link></li>
-              <li><Link href="/politica-de-entrega" className="text-sm hover:text-red-400 transition-colors">Política de entrega</Link></li>
-              <li><Link href="/formas-de-pagamento" className="text-sm hover:text-red-400 transition-colors">Formas de pagamento</Link></li>
-              <li><Link href="/termos-de-uso" className="text-sm hover:text-red-400 transition-colors">Termos de uso</Link></li>
+
+          <div className="col-span-12 md:col-span-3">
+            <p className="text-xs font-bold text-motocar-white uppercase tracking-wider mb-3">Políticas</p>
+            <ul className="space-y-1.5">
+              <li><Link href="/politica-de-privacidade" className="text-sm hover:text-motocar-red transition-colors">Privacidade</Link></li>
+              <li><Link href="/politica-de-troca" className="text-sm hover:text-motocar-red transition-colors">Troca e devolução</Link></li>
+              <li><Link href="/politica-de-entrega" className="text-sm hover:text-motocar-red transition-colors">Entrega</Link></li>
+              <li><Link href="/termos-de-uso" className="text-sm hover:text-motocar-red transition-colors">Termos de uso</Link></li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-500">
-            CNPJ: {SITE_CONFIG.cnpj} &copy; {new Date().getFullYear()} Motocar. Todos os direitos reservados.
+      </div>
+
+      <div className="border-t border-motocar-graphite">
+        <div className="container-motocar py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-[11px] text-motocar-gray">
+            CNPJ: {SITE_CONFIG.cnpj} &copy; {new Date().getFullYear()} Motocar
           </p>
-          <div className="flex items-center gap-4 text-xs text-gray-500">
-            <Link href="/mapa-do-site" className="hover:text-red-400 transition-colors">Mapa do site</Link>
-          </div>
+          <p className="text-[11px] text-motocar-gray">
+            {SITE_CONFIG.address.full}
+          </p>
         </div>
       </div>
     </footer>

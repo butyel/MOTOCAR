@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Heart, ShoppingCart, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { formatPrice, calculateDiscount, isPromotionActive, buildWhatsAppUrl, cn } from '@/lib/utils'
 import { useStore } from '@/lib/store'
 import { Product } from '@/types'
@@ -43,39 +42,39 @@ export function ProductCard({ product }: { product: Product }) {
 
   const whatsappMessage = buildWhatsAppUrl(
     SITE_CONFIG.whatsapp,
-    `Olá, gostaria de saber mais sobre o produto: ${product.name} (Cód: ${product.sku})`
+    `Olá, gostaria de saber mais sobre: ${product.name} (Cód: ${product.sku})`
   )
 
   return (
-    <div className="group relative bg-white rounded-lg border border-gray-200 hover:border-red-200 hover:shadow-sm transition-all">
+    <div className="group relative border border-motocar-light-gray bg-white hover:border-motocar-red transition-colors">
       <Link href={`/produtos/${product.slug}`} className="block">
-        <div className="relative aspect-square overflow-hidden rounded-t-lg bg-gray-100">
+        <div className="relative aspect-square bg-motocar-off-white overflow-hidden">
           {primaryImage ? (
             <Image
               src={primaryImage.url}
               alt={primaryImage.alt || product.name}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="object-cover group-hover:scale-[1.02] transition-transform duration-200"
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
             />
           ) : (
-            <div className="flex items-center justify-center h-full text-gray-300 text-sm">
+            <div className="flex items-center justify-center h-full text-motocar-gray text-xs font-semibold uppercase tracking-wider">
               Sem imagem
             </div>
           )}
           {discount && isOnSale && (
-            <Badge className="absolute top-2 left-2 bg-red-600 text-white text-xs">
+            <span className="absolute top-2 left-2 bg-motocar-red text-white text-[10px] font-bold px-1.5 py-0.5 leading-tight">
               -{discount}%
-            </Badge>
+            </span>
           )}
           {product.is_new && !isOnSale && (
-            <Badge variant="secondary" className="absolute top-2 left-2 bg-green-600 text-white text-xs">
+            <span className="absolute top-2 left-2 bg-motocar-green text-white text-[10px] font-bold px-1.5 py-0.5 leading-tight">
               Novo
-            </Badge>
+            </span>
           )}
           {product.stock <= 0 && (
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <span className="text-white font-semibold text-sm bg-gray-900/80 px-3 py-1 rounded">
+            <div className="absolute inset-0 bg-motocar-graphite/60 flex items-center justify-center">
+              <span className="text-white font-bold text-xs bg-motocar-dark px-2 py-1">
                 Esgotado
               </span>
             </div>
@@ -83,67 +82,68 @@ export function ProductCard({ product }: { product: Product }) {
           <button
             onClick={handleToggleFavorite}
             className={cn(
-              'absolute top-2 right-2 p-1.5 rounded-full bg-white/90 hover:bg-white shadow-sm transition-colors',
-              isFavorite ? 'text-red-500' : 'text-gray-400 hover:text-red-500'
+              'absolute top-2 right-2 p-1 border transition-colors',
+              isFavorite ? 'bg-motocar-red border-motocar-red text-white' : 'bg-white/90 border-motocar-light-gray text-motocar-gray hover:text-motocar-red hover:border-motocar-red'
             )}
             aria-label={isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
           >
-            <Heart className={cn('h-4 w-4', isFavorite && 'fill-current')} />
+            <Heart className={cn('h-3.5 w-3.5', isFavorite && 'fill-current')} />
           </button>
         </div>
         <div className="p-3">
-          <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">
+          <p className="text-[10px] text-motocar-gray font-semibold uppercase tracking-wider mb-0.5">
             {product.brand_name || 'Motocar'}
           </p>
-          <h3 className="text-sm font-medium text-gray-900 line-clamp-2 mb-1 leading-snug min-h-[2.5rem]">
+          <h3 className="text-sm font-semibold text-motocar-graphite line-clamp-2 mb-0.5 leading-snug">
             {product.name}
           </h3>
           {product.compatibilities && product.compatibilities.length > 0 && (
-            <p className="text-xs text-gray-400 mb-2 line-clamp-1">
+            <p className="text-[11px] text-motocar-gray line-clamp-1 mb-1">
               {product.compatibilities[0].motorcycle_brand} {product.compatibilities[0].motorcycle_model}
             </p>
           )}
+          <p className="text-[10px] text-motocar-gray font-mono mb-1.5">
+            SKU: {product.sku}
+          </p>
           <div className="flex items-baseline gap-1.5 mb-1">
             {isOnSale ? (
               <>
-                <span className="text-lg font-bold text-red-600">
+                <span className="text-base font-bold text-motocar-red">
                   {formatPrice(product.promotional_price!)}
                 </span>
-                <span className="text-xs text-gray-400 line-through">
+                <span className="text-[11px] text-motocar-gray line-through">
                   {formatPrice(product.price)}
                 </span>
               </>
             ) : (
-              <span className="text-lg font-bold text-gray-900">
+              <span className="text-base font-bold text-motocar-graphite">
                 {formatPrice(product.price)}
               </span>
             )}
           </div>
-          <p className="text-xs text-green-600 mb-2">
+          <p className="text-[11px] text-motocar-green font-medium">
             {product.stock > 0 ? 'Disponível' : 'Sob consulta'}
           </p>
         </div>
       </Link>
-      <div className="px-3 pb-3 flex gap-2">
+      <div className="px-3 pb-3 flex gap-1.5">
         <Button
           size="sm"
-          className="flex-1 text-xs"
+          className="flex-1 text-[11px]"
           onClick={handleAddToCart}
           disabled={product.stock <= 0}
         >
-          <ShoppingCart className="h-3.5 w-3.5" />
+          <ShoppingCart className="h-3 w-3" />
           Adicionar
         </Button>
         <a
           href={whatsappMessage}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            'inline-flex items-center justify-center h-9 w-9 rounded-md bg-green-600 text-white hover:bg-green-700 transition-colors shrink-0'
-          )}
-          aria-label="Comprar pelo WhatsApp"
+          className="inline-flex items-center justify-center h-8 w-8 border border-motocar-light-gray text-motocar-green hover:border-motocar-green hover:bg-motocar-green hover:text-white transition-colors shrink-0"
+          aria-label="Consultar pelo WhatsApp"
         >
-          <MessageCircle className="h-4 w-4" />
+          <MessageCircle className="h-3.5 w-3.5" />
         </a>
       </div>
     </div>

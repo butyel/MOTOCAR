@@ -34,29 +34,6 @@ export const SITE_CONFIG = {
     process.env.NEXT_PUBLIC_ENABLE_ONLINE_CHECKOUT === 'true',
 } as const
 
-export const CATEGORY_ICONS: Record<string, string> = {
-  'motor-e-mecanica': 'wrench',
-  'eletrica-e-ignicao': 'zap',
-  'sistema-de-freio': 'circle-slash',
-  'transmissao-e-relacao': 'git-compare',
-  'pneus-e-camaras': 'circle',
-  'rodas-aros-e-raios': 'hexagon',
-  suspensao: 'chevrons-up-down',
-  filtros: 'filter',
-  lubrificantes: 'droplet',
-  carenagens: 'shield',
-  'farois-e-iluminacao': 'sun',
-  'cabos-e-manetes': 'minus',
-  baterias: 'battery-charging',
-  escapamentos: 'radius',
-  acessorios: 'backpack',
-  capacetes: 'helmet',
-  vestuario: 'shirt',
-  ferramentas: 'tool',
-  ofertas: 'tag',
-  novidades: 'sparkles',
-}
-
 export const MOTORCYCLE_BRANDS = [
   'Honda',
   'Yamaha',
@@ -72,11 +49,27 @@ export const MOTORCYCLE_BRANDS = [
   'Royal Enfield',
 ]
 
-export const SERVICE_HIGHLIGHTS = [
-  'Atendimento especializado',
-  'Peças para diferentes modelos',
-  'Oficina em Presidente Epitácio',
-  'Orçamento transparente',
-  'Manutenção preventiva e corretiva',
-  'Suporte antes e depois da compra',
-]
+export const NAV_LINKS = [
+  { name: 'Peças', href: '/produtos' },
+  { name: 'Acessórios', href: '/categorias/acessorios' },
+  { name: 'Pneus', href: '/categorias/pneus-e-camaras' },
+  { name: 'Lubrificantes', href: '/categorias/lubrificantes' },
+  { name: 'Capacetes', href: '/categorias/capacetes' },
+  { name: 'Oficina', href: '/servicos' },
+  { name: 'Ofertas', href: '/ofertas' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contato', href: '/contato' },
+] as const
+
+export const POPULAR_CATEGORIES = [
+  { id: 'cat-2', number: '01', name: 'Freios', slug: 'sistema-de-freio' },
+  { id: 'cat-3', number: '02', name: 'Relação e Transmissão', slug: 'transmissao-e-relacao' },
+  { id: 'cat-7', number: '03', name: 'Óleos e Lubrificantes', slug: 'lubrificantes' },
+  { id: 'cat-6', number: '04', name: 'Filtros', slug: 'filtros' },
+  { id: 'cat-5', number: '05', name: 'Pneus', slug: 'pneus-e-camaras' },
+  { id: 'cat-8', number: '06', name: 'Baterias', slug: 'baterias' },
+  { id: 'cat-4', number: '07', name: 'Elétrica', slug: 'eletrica-e-ignicao' },
+  { id: 'cat-12', number: '08', name: 'Iluminação', slug: 'farois-e-iluminacao' },
+  { id: 'cat-1', number: '09', name: 'Motor', slug: 'motor-e-mecanica' },
+  { id: 'cat-9', number: '10', name: 'Acessórios', slug: 'acessorios' },
+] as const

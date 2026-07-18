@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { X, Menu, ChevronDown, ChevronRight } from 'lucide-react'
 import { Category } from '@/types'
-import { SITE_CONFIG } from '@/lib/constants'
+import { SITE_CONFIG, NAV_LINKS } from '@/lib/constants'
 
 function buildTree(categories: Category[]): Category[] {
   const map = new Map<string, Category>()
@@ -28,8 +28,8 @@ function MenuItem({ category, depth = 0 }: { category: Category; depth?: number 
     <div>
       <Link
         href={`/categorias/${category.slug}`}
-        className={`flex items-center justify-between py-2.5 px-4 text-sm hover:bg-gray-50 hover:text-red-600 ${
-          depth > 0 ? 'pl-8 text-gray-500' : 'text-gray-700 font-medium'
+        className={`flex items-center justify-between py-2.5 px-4 text-sm hover:bg-motocar-light-gray hover:text-motocar-red transition-colors ${
+          depth > 0 ? 'pl-8 text-motocar-gray' : 'text-motocar-graphite font-semibold'
         }`}
         onClick={(e) => {
           if (hasChildren) {
@@ -44,7 +44,7 @@ function MenuItem({ category, depth = 0 }: { category: Category; depth?: number 
         )}
       </Link>
       {open && hasChildren && (
-        <div className="bg-gray-50">
+        <div className="bg-motocar-off-white">
           {category.children!.map((child) => (
             <MenuItem key={child.id} category={child} depth={depth + 1} />
           ))}
@@ -62,20 +62,20 @@ export function MobileMenu({ categories }: { categories: Category[] }) {
     <div className="lg:hidden">
       <button
         onClick={() => setIsOpen(true)}
-        className="p-2 text-gray-600 hover:text-red-600"
+        className="p-1.5 text-motocar-graphite hover:text-motocar-red transition-colors"
         aria-label="Abrir menu"
       >
-        <Menu className="h-6 w-6" />
+        <Menu className="h-5 w-5" />
       </button>
       {isOpen && (
         <div className="fixed inset-0 z-[60] flex">
           <div className="fixed inset-0 bg-black/50" onClick={() => setIsOpen(false)} />
-          <div className="relative w-80 max-w-[85vw] bg-white h-full overflow-y-auto shadow-xl">
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between z-10">
-              <span className="font-bold text-lg text-gray-900">Menu</span>
+          <div className="relative w-80 max-w-[85vw] bg-white h-full overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-motocar-light-gray p-4 flex items-center justify-between">
+              <span className="font-heading text-xl font-bold text-motocar-graphite">Menu</span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 text-gray-400 hover:text-gray-600"
+                className="p-1 text-motocar-gray hover:text-motocar-graphite transition-colors"
                 aria-label="Fechar menu"
               >
                 <X className="h-5 w-5" />
@@ -84,64 +84,42 @@ export function MobileMenu({ categories }: { categories: Category[] }) {
             <div className="py-2">
               <Link
                 href="/"
-                className="block py-2.5 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-red-600"
+                className="block py-2.5 px-4 text-sm font-semibold text-motocar-graphite hover:bg-motocar-light-gray hover:text-motocar-red transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Início
               </Link>
-              {tree.map((category) => (
-                <MenuItem key={category.id} category={category} />
+              {NAV_LINKS.filter(l => l.name !== 'Contato').map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block py-2.5 px-4 text-sm font-semibold text-motocar-graphite hover:bg-motocar-light-gray hover:text-motocar-red transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </Link>
               ))}
-              <div className="border-t border-gray-200 mt-2 pt-2">
-                <Link
-                  href="/ofertas"
-                  className="block py-2.5 px-4 text-sm font-medium text-red-600 hover:bg-red-50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Ofertas
-                </Link>
-                <Link
-                  href="/novidades"
-                  className="block py-2.5 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Novidades
-                </Link>
-                <Link
-                  href="/servicos"
-                  className="block py-2.5 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Serviços
-                </Link>
-                <Link
-                  href="/blog"
-                  className="block py-2.5 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/sobre"
-                  className="block py-2.5 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Sobre
-                </Link>
+              <div className="border-t border-motocar-light-gray mt-2 pt-2">
+                <p className="px-4 text-xs font-semibold text-motocar-gray uppercase tracking-wider mb-1">Categorias</p>
+                {tree.map((category) => (
+                  <MenuItem key={category.id} category={category} />
+                ))}
+              </div>
+              <div className="border-t border-motocar-light-gray mt-2 pt-2 px-4">
+                <p className="text-xs text-motocar-gray mb-2">Atendimento</p>
+                <a href={`tel:${SITE_CONFIG.phone}`} className="block text-sm text-motocar-graphite hover:text-motocar-red transition-colors">
+                  {SITE_CONFIG.phone}
+                </a>
+                <p className="text-xs text-motocar-gray mt-1">{SITE_CONFIG.address.full}</p>
+              </div>
+              <div className="border-t border-motocar-light-gray mt-2 pt-2 px-4 pb-4">
                 <Link
                   href="/contato"
-                  className="block py-2.5 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                  className="block text-sm text-motocar-red font-semibold hover:text-motocar-red-dark transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   Contato
                 </Link>
-              </div>
-              <div className="border-t border-gray-200 mt-2 pt-2 px-4">
-                <p className="text-xs text-gray-400 mb-2">Atendimento</p>
-                <a href={`tel:${SITE_CONFIG.phone}`} className="block text-sm text-gray-600 hover:text-red-600">
-                  {SITE_CONFIG.phone}
-                </a>
-                <p className="text-xs text-gray-400 mt-2">{SITE_CONFIG.address.full}</p>
               </div>
             </div>
           </div>

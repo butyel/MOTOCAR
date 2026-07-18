@@ -4,23 +4,22 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-motocar-red focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-transparent',
   {
     variants: {
       variant: {
-        default: 'bg-red-600 text-white hover:bg-red-700 shadow-sm',
-        destructive: 'bg-red-600 text-white hover:bg-red-700',
-        outline: 'border border-gray-300 bg-white hover:bg-gray-50 hover:text-red-600',
-        secondary: 'bg-green-600 text-white hover:bg-green-700 shadow-sm',
-        ghost: 'hover:bg-gray-100 hover:text-red-600',
-        link: 'text-red-600 underline-offset-4 hover:underline',
+        default: 'bg-motocar-red text-white hover:bg-motocar-red-dark active:bg-motocar-red-dark',
+        destructive: 'bg-motocar-red text-white hover:bg-motocar-red-dark',
+        outline: 'border-motocar-light-gray bg-white text-motocar-graphite hover:border-motocar-red hover:text-motocar-red',
+        secondary: 'bg-motocar-green text-white hover:bg-motocar-green-light active:bg-motocar-green-light',
+        ghost: 'text-motocar-graphite hover:bg-motocar-light-gray hover:text-motocar-red',
+        link: 'text-motocar-red underline-offset-4 hover:underline',
       },
       size: {
-        default: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3 text-xs',
-        lg: 'h-11 rounded-md px-8 text-base',
-        xl: 'h-12 rounded-md px-10 text-lg',
-        icon: 'h-10 w-10',
+        default: 'h-9 px-4 py-1.5',
+        sm: 'h-8 px-3 py-1 text-xs',
+        lg: 'h-10 px-6 py-2 text-base',
+        icon: 'h-9 w-9',
       },
     },
     defaultVariants: {

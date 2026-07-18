@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Barlow_Condensed, Inter } from 'next/font/google'
 import './globals.css'
 import { StoreProvider } from '@/lib/store'
 import { Header } from '@/components/layout/Header'
@@ -6,6 +7,20 @@ import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton'
 import { Toaster } from '@/components/ui/toaster'
 import { getCategories } from '@/lib/data'
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-heading',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -37,8 +52,8 @@ export default async function RootLayout({
   const categories = await getCategories()
 
   return (
-    <html lang="pt-BR">
-      <body className="min-h-screen flex flex-col">
+    <html lang="pt-BR" className={`${barlowCondensed.variable} ${inter.variable}`}>
+      <body className="min-h-screen flex flex-col font-body">
         <StoreProvider>
           <Header categories={categories} />
           <main className="flex-1">{children}</main>
