@@ -42,7 +42,7 @@ export default async function BlogPage(props: {
           <Link
             href="/blog"
             className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              !categoria ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              !categoria ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
             Todos
@@ -52,7 +52,7 @@ export default async function BlogPage(props: {
               key={cat.id}
               href={`/blog?categoria=${cat.slug}`}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                categoria === cat.slug ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                categoria === cat.slug ? 'bg-red-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
               {cat.name}
